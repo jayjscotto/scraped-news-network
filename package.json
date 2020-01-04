@@ -1,0 +1,28 @@
+{
+  "name": "scraped-news-network",
+  "version": "1.0.0",
+  "description": "Web Scraping project built with Javascript, Axios, Cheerio, Express, Node, HTML, CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayjscotto/scraped-news-network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayjscotto/scraped-news-network/issues"
+  },
+  "homepage": "https://github.com/jayjscotto/scraped-news-network#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mongoose": "^5.8.4"
+  }
+}
