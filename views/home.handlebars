@@ -1,1 +1,9 @@
-<h1>{{text}}</h1>
+<div class="main">
+    <ul>
+        {{#each articles}}
+        <a href="{{link}}">
+            <li>{{title}}</li>
+        </a>
+        {{/each}}
+    </ul>
+</div>

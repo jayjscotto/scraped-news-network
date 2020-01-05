@@ -22,24 +22,6 @@ body {
   min-height: 100%;
 }
 
-body a,
-body button {
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  border: none;
-  padding: 0.5em 2em;
-  margin: 0.5em;
-  border-radius: 10px;
-  text-transform: uppercase;
-}
-
-body a:hover,
-body button:hover {
-  text-decoration: none;
-  background-color: rgba(0, 245, 184, 0.6);
-  cursor: pointer;
-}
-
 body div.nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -53,6 +35,23 @@ body div.nav {
   color: white;
   -webkit-box-shadow: 0px 4px 16px -5px rgba(146, 145, 146, 0.97);
           box-shadow: 0px 4px 16px -5px rgba(146, 145, 146, 0.97);
+}
+
+body div.nav a {
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  border: none;
+  padding: 0.5em 2em;
+  margin: 0.5em;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+body div.nav a:hover {
+  text-decoration: none;
+  background-color: rgba(0, 245, 184, 0.8);
+  color: #343a40;
+  cursor: pointer;
 }
 
 body div.nav div.headline {
@@ -97,6 +96,10 @@ body div.nav div.menu ul li a {
   text-decoration: none;
 }
 
+body div.nav div.menu ul li a:hover {
+  color: #343a40;
+}
+
 body #bg {
   background-color: rgba(0, 245, 184, 0.6);
   -webkit-clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
@@ -112,6 +115,26 @@ body #bg {
     -webkit-clip-path: polygon(100% 0, 100% 25%, 100% 42%, 69% 100%, 0 100%, 0 0);
             clip-path: polygon(100% 0, 100% 25%, 100% 42%, 69% 100%, 0 100%, 0 0);
   }
+}
+
+body div.main {
+  padding: 0;
+  margin: 0;
+  max-height: 80%;
+  -webkit-clip-path: polygon(17% 0, 100% 0%, 80% 100%, 0% 100%);
+          clip-path: polygon(17% 0, 100% 0%, 80% 100%, 0% 100%);
+  background-color: white;
+  overflow: scroll;
+}
+
+body div.main ul {
+  margin: 2em auto;
+  width: 60%;
+}
+
+body div.main ul li {
+  margin: 1em auto;
+  list-style: none;
 }
 
 body footer {
@@ -141,13 +164,14 @@ body footer div.footer-content {
 body footer div.footer-content a {
   margin: 0 auto;
   padding: 0.5em 2em;
-  color: rgba(0, 245, 184, 0.6);
+  color: white;
+  text-decoration: none;
 }
 
 body footer div.footer-content a:hover {
   text-decoration: none;
   color: #343a40;
-  background-color: rgba(0, 245, 184, 0.6);
+  background-color: rgba(0, 245, 184, 0.8);
 }
 
 body footer div.footer-content a h6 {
