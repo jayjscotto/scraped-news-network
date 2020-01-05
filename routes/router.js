@@ -1,6 +1,5 @@
-const express = require('express');
-const router = express.router();
-
+const express = require("express");
+const router = express.Router();
 
 router.get('/', (req,res) => {
     //do some cheerio and axios work
@@ -8,5 +7,10 @@ router.get('/', (req,res) => {
     //use cheerio to scrape
     //put results in handlebars object
     //send to front end
-    res.render('main')
+    var hbsObj = {
+        text: "hello world"
+    }
+    res.render('home', hbsObj)
 })
+
+module.exports = router;
