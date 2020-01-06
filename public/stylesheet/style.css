@@ -49,7 +49,7 @@ body div.nav a {
 
 body div.nav a:hover {
   text-decoration: none;
-  background-color: rgba(0, 245, 184, 0.8);
+  background-color: rgba(0, 245, 184, 0.9);
   color: #343a40;
   cursor: pointer;
 }
@@ -69,6 +69,8 @@ body div.nav div.headline h1 {
 }
 
 body div.nav div.headline h5 {
+  font-weight: 500;
+  text-transform: uppercase;
   margin-left: 1em;
   margin-top: 0.85em;
 }
@@ -97,6 +99,7 @@ body div.nav div.menu ul li a {
 }
 
 body div.nav div.menu ul li a:hover {
+  background-color: rgba(0, 245, 184, 0.9);
   color: #343a40;
 }
 
@@ -132,16 +135,20 @@ body div.main {
   border-radius: 10px;
   width: 80%;
   background-color: white;
-  overflow: scroll;
 }
 
-body div.main::-webkit-scrollbar {
+body div.main div.articles {
+  overflow: scroll;
+  padding: 0.5em;
+}
+
+body div.main div.articles::-webkit-scrollbar {
   width: 0px;
   background: transparent;
   /* make scrollbar transparent */
 }
 
-body div.main div.article {
+body div.main div.articles div.article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,15 +158,15 @@ body div.main div.article {
           flex-direction: row;
 }
 
-body div.main div.article div.title {
+body div.main div.articles div.article div.title {
   width: 80%;
 }
 
-body div.main div.article div.title h4 {
+body div.main div.articles div.article div.title h4 {
   margin: 1em 0;
 }
 
-body div.main div.article div.link {
+body div.main div.articles div.article div.buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,19 +174,97 @@ body div.main div.article div.link {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 20%;
+  max-width: 20%;
 }
 
-body div.main div.article div.link a {
+body div.main div.articles div.article div.buttons button {
   text-decoration: none;
-  padding: 0.25em 1em;
-  border: none;
+  border: 2px solid black;
   border-radius: 10px;
+  padding: 0.25em 1em;
+  margin: auto 0.25em;
+  height: 2em;
+  color: black;
+  font-weight: 500;
 }
 
-body div.main div.article div.link a:hover {
+body div.main div.articles div.article div.buttons button:hover {
   color: #343a40;
-  background-color: rgba(0, 245, 184, 0.8);
+  background-color: rgba(0, 245, 184, 0.9);
+  cursor: pointer;
+}
+
+body div.main div.articles hr {
+  margin: 0.5em 0;
+}
+
+body div#modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 5em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+body div#modal::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+body div#modal div.modal-content {
+  margin: auto;
+  display: block;
+  position: relative;
+  width: 80%;
+  max-width: 75%;
+}
+
+body div#modal div.modal-content div.modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-radius: 10px 10px 0 0;
+  padding: 0.5em 2em;
+  background-color: rgba(0, 245, 184, 0.9);
+  color: white;
+}
+
+body div#modal div.modal-content div.modal-header span {
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  margin-right: 1.5em;
+  padding-bottom: 2em;
+}
+
+body div#modal div.modal-content div.modal-header span:hover {
+  cursor: pointer;
+}
+
+body div#modal div.modal-content div.modal-body {
+  padding: 2px 16px;
+  background-color: white;
+}
+
+body div#modal div.modal-content div.modal-footer {
+  border-radius: 0 0 0 10px;
+  padding: 2px 16px;
+  background-color: rgba(0, 245, 184, 0.9);
+  color: white;
+}
+
+body div#modal div.modal-content div.modal-footer h3 {
+  margin-left: 1em;
 }
 
 body footer {
@@ -211,12 +296,15 @@ body footer div.footer-content a {
   padding: 0.5em 2em;
   color: white;
   text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-size: 1.25em;
 }
 
 body footer div.footer-content a:hover {
   text-decoration: none;
   color: #343a40;
-  background-color: rgba(0, 245, 184, 0.8);
+  background-color: rgba(0, 245, 184, 0.9);
 }
 
 body footer div.footer-content a h6 {

@@ -1,15 +1,36 @@
 <div class="main">
+    <h2>Today's Scraped News Network Articles...</h2>
+    <hr>
+    <div class="articles">
     {{#each articles}}
     <div class="article">
         <div class="title">
             <h4>{{title}}</h4>
         </div>
-        <div class="link">
-            <a href="{{link}}">
+        <div class="buttons">
+            <button class="modal-open" data-link="{{link}}">
                 Link
-            </a>
-            <a href="">Comment</a>
+            </button>
+            <button href="">Comment</button>
         </div>
     </div>
+    <hr>
     {{/each}}
+    </div>
+</div>
+
+<div id="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Viewing Article</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Some text in the Modal Body</p>
+            <p>Some other text...</p>
+        </div>
+        <div class="modal-footer">
+            <h3>Modal Footer</h3>
+        </div>
+    </div>
 </div>
