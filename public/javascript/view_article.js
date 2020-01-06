@@ -1,20 +1,24 @@
 //script for users to navigate and click through different articles
 // Get the modal
+
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal');
-  modal.style.display = 'none';
+  
 
   // Get the button that opens the modal
   const btns = document.querySelectorAll('.modal-open').forEach(btn => {
     // When the user clicks on the link button, open the modal
+    
     btn.addEventListener('click', e => {
       const link = e.target.getAttribute('data-link');
+      modal.style.display = 'block';
+      console.log('hello')
       const request = new XMLHttpRequest();
       request.open('GET', '/article?' + link, true);
       request.onload = function() {
         if (this.status >= 200 && this.status < 400) {
           // Success!
-          modal.style.display = 'block;';
+        
         
         } else {
           // We reached our target server, but it returned an error
