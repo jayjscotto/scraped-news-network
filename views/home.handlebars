@@ -1,9 +1,15 @@
 <div class="main">
-    <ul>
-        {{#each articles}}
-        <a href="{{link}}">
-            <li>{{title}}</li>
-        </a>
-        {{/each}}
-    </ul>
+    {{#each articles}}
+    <div class="article">
+        <div class="title">
+            <h4>{{title}}</h4>
+        </div>
+        <div class="link">
+            <a href="{{link}}">
+                Link
+            </a>
+            <a href="">Comment</a>
+        </div>
+    </div>
+    {{/each}}
 </div>

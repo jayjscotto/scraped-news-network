@@ -106,19 +106,45 @@ body {
   }
 
   div.main {
-    padding: 0;
-    margin: 0;
-    max-height: 80%;
-    clip-path: polygon(17% 0, 100% 0%, 80% 100%, 0% 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    margin: 1.5em auto;
+    height: 80vh;
+    border: none;
+    border-radius: 10px;
+    width: 80%;
     background-color: white;
     overflow: scroll;
-    ul {
-      margin: 2em auto;
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+    }
+    div.article {
+      display: flex;
+      flex-direction: row;
 
-      width: 60%;
-      li {
-        margin: 1em auto;
-        list-style: none;
+      div.title {
+        width: 80%;
+        h4 {
+          margin: 1em 0;
+        }
+      }
+      div.link {
+        display: flex;
+        flex-direction: row;
+        width: 20%;
+        a {
+          text-decoration: none;
+          padding: 0.25em 1em;
+          border: none;
+          border-radius: 10px;
+          
+          &:hover {
+            color: colors(color4);
+            background-color: colors(color1a);
+          }
+        }
       }
     }
   }
