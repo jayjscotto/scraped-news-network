@@ -3,31 +3,46 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal');
-  
 
   // Get the button that opens the modal
   const btns = document.querySelectorAll('.modal-open').forEach(btn => {
     // When the user clicks on the link button, open the modal
-    
+
     btn.addEventListener('click', e => {
       const link = e.target.getAttribute('data-link');
-      modal.style.display = 'block';
-      console.log('hello')
-      const request = new XMLHttpRequest();
-      request.open('GET', '/article?' + link, true);
-      request.onload = function() {
-        if (this.status >= 200 && this.status < 400) {
-          // Success!
-        
-        
-        } else {
-          // We reached our target server, but it returned an error
+     
+      console.log('hello');
+
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
         }
       };
-      request.onerror = function() {
-        // There was a connection error of some sort
-      };
-      request.send();
+
+      fetch('/article?' + link)
+        .then(response => {
+        modal.style.display = 'block';
+          return response.json()
+          
+        })
+        .then(response => {
+          console.log(typeof response[0].paragraphs);
+            const p = document.createElement('p')
+            const modalBody = document.querySelector('modal-body');
+            console.log(modalBody.textContent);
+            // p.textContent = response[0].title;
+            // //p.textContent = response[0].paragraphs, 
+            // modalBody.appendChild(p)
+          
+     
+            p.textContent = response[0].paragraphs
+            modalBody.appendChild(p)
+          
+
+        });
+ 
+
     });
   });
 

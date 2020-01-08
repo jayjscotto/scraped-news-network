@@ -10,42 +10,43 @@ router.get('/', (req, res) => {
   //put results in handlebars object
   //send to front end
 
-//   axios.get('http://www.nytimes.com').then(response => {
-//     //$ to load the response data with cheerio
-//     const $ = cheerio.load(response.data);
+  //   axios.get('http://www.nytimes.com').then(response => {
+  //     //$ to load the response data with cheerio
+  //     const $ = cheerio.load(response.data);
 
-//     //array for the articles that will be scraped
-//     const articles = [];
+  //     //array for the articles that will be scraped
+  //     const articles = [];
 
-//     //for each article
-//     $('article').each((i, element) => {
-//       //scrape the title
-//       const title = $(element)
-//         .children()
-//         .text();
-//       //scrape the link to the post
-//       const link = $(element)
-//         .find('a')
-//         .attr('href');
-//       //push the article title and link to the articles array
-//       articles.push({
-//         title: title,
-//         link: link
-//       });
-//     });
+  //     //for each article
+  //     $('article').each((i, element) => {
+  //       //scrape the title
+  //       const title = $(element)
+  //         .children()
+  //         .text();
+  //       //scrape the link to the post
+  //       const link = $(element)
+  //         .find('a')
+  //         .attr('href');
+  //       //push the article title and link to the articles array
+  //       articles.push({
+  //         title: title,
+  //         link: link
+  //       });
+  //     });
 
-//     //handlebars object
-//     const scraped = {
-//       articles: articles
-//     };
+  //     //handlebars object
+  //     const scraped = {
+  //       articles: articles
+  //     };
 
-axios.get('http://www.slate.com').then(response => {
+  axios.get('http://www.slate.com').then(response => {
     //$ to load the response data with cheerio
     const $ = cheerio.load(response.data);
 
     //array for the articles that will be scraped
     const articles = [];
 
+    
     //for each article
     $('.story-teaser').each((i, element) => {
       //scrape the title
@@ -74,16 +75,35 @@ axios.get('http://www.slate.com').then(response => {
 });
 
 router.get('/article?:article', (req, res) => {
-  console.log(Object.keys(req.query)[0]);
-  //const article = req.params.article.split('').slice(9).join('')
-  
-//   axios.get('http://nytimes.com' + article).then(response => {
-//     //$ to load the response data with cheerio
-//     const $ = cheerio.load(response.data);
+  //get the link to the article
+  const articleLink = Object.keys(req.query)[0];
+  //declare array to push the scraped article elements into
+  const articleArr = [];
 
-//   });
-
-res.status(200).send()
+  //axios get request to the article link
+  axios.get(articleLink).then(response => {
+    //$ to load the response data with cheerio
+    const $ = cheerio.load(response.data);
+    $('#main').each((i, element) => {
+      //scrape the title
+      const title = $(element)
+        .find('.article__hed')
+        .attr('itemprop', 'headline')
+        .text();
+      //scrape the article paragraphs
+      const paragraphs = $(element)
+        .find('p')
+        .attr('class', 'slate-paragraph')
+        .text();
+      //push the article title and link to the articles array
+      articleArr.push({
+        title: title,
+        paragraphs: paragraphs
+      });
+      //send the article array as the response
+      res.send(articleArr);
+    });
+  });
 });
 
 module.exports = router;
