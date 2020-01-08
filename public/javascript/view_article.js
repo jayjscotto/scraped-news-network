@@ -1,15 +1,12 @@
-// array that will contain specific article
-const article = [];
 
 // async function to send the article link to the server
 // the server then scrapes the link at that route
 // the server then returns the scraped article
 // the object is turned into JSON, then pushed to the article array
 const getArticle = async link => {
-  article.splice(0, article.length);
   const response = await fetch('/article?' + link);
   const data = await response.json();
-  return article.push(data[0]);
+  return data;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,17 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       getArticle(link).then(data => {
         // after the article object is returned, show the modal
+       
         modal.style.display = 'block';
-        
+        console.log(data)
         const modalBody = document.querySelector('.modal-body');
         const header = document.querySelector('.modal-header h1');
         const p = document.createElement('p');
         
-        header.textContent = article[0].title;
-        p.textContent = article[0].paragraphs;
+        header.textContent = data.title;
+        p.textContent = data.paragraphs;
         modalBody.appendChild(p);
-        
-        console.log(article[0].paragraphs);
+
       });
     });
 

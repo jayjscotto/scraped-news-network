@@ -84,24 +84,33 @@ router.get('/article?:article', (req, res) => {
   axios.get(articleLink).then(response => {
     //$ to load the response data with cheerio
     const $ = cheerio.load(response.data);
+    const articleObj = {
+        paragraphs: []
+    }
     $('#main').each((i, element) => {
+
       //scrape the title
       const title = $(element)
         .find('.article__hed')
         .attr('itemprop', 'headline')
         .text();
+        articleObj.title = title;
+
       //scrape the article paragraphs
-      const paragraphs = $(element)
+      $('.article__content').each((i, element) => {
+        const paragraph = $(element)
         .find('p')
-        .attr('class', 'slate-paragraph')
+        .attr('class', '.slate-paragraph')
         .text();
+        
+        articleObj.paragraphs.push(paragraph);
+      })
+     
+        console.log(articleObj)
       //push the article title and link to the articles array
-      articleArr.push({
-        title: title,
-        paragraphs: paragraphs
-      });
+      articleArr.push(articleObj);
       //send the article array as the response
-      res.send(articleArr);
+      res.send(articleObj);
     });
   });
 });
