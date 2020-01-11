@@ -64,14 +64,18 @@ router.post('/article/:article', (req, res) => {
 });
 
 router.get('/saved-articles', (req, res) => {
-  let articles = [];
+
   db.Article.find({}, (error, found) => {
     if (error) {
       console.log(error);
     }
-    articles.push(found);
+    
   }).then((found) => {
     console.log(found)
+    const articles = [];
+    found.forEach(article => {
+      articles.push(article)
+    })
     const saved = {
       articles: articles
     }
