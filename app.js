@@ -5,12 +5,22 @@ const logger = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
 
-const router = require('./routes/router');
+const router = require('./controller/router');
 
 const app = express();
+
+//mongoose.connect(
+  //   `mongodb+srv://jayjs:${process.env.DB_PASSWORD}@cluster0-uudkd.mongodb.net/scrapednewsnetwork?retryWrites=true&w=majority`,
+  //   {
+  //     useNewUrlParser: true,
+  //     useUnifiedTopology: true,
+  //     useFindAndModify: false
+  //   }
+  // );
+  
  
 mongoose.connect(
-  `mongodb://localhost/scrapednewsnetwork`, 
+  `mongodb://localhost:27017/scraped-news-network`, 
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -28,14 +38,6 @@ app.set('view engine', 'handlebars');
 
 app.set('view options', { layout: 'layout' });
 
-mongoose.connect(
-  `mongodb+srv://jayjs:${process.env.DB_PASSWORD}@cluster0-uudkd.mongodb.net/scrapednewsnetwork?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  }
-);
 
 //middleware
 app.use(logger('dev'));

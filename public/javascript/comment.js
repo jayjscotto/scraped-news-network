@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const commentButton = document.querySelector('#submit-comment');
   commentButton.addEventListener('click', e => {
     e.preventDefault();
-    const user = document.querySelector('#comment-user').text();
-    const comment = document.querySelector('#comment-body').text();
+    const user = document.querySelector('#comment-user').value;
+    const comment = document.querySelector('#comment-body').value;
 
     saveComment(user, comment);
   });

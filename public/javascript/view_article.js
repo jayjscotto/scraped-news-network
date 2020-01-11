@@ -45,8 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const link = e.target.getAttribute('data-link');
 
-      console.log('hello');
-
       getArticle(link).then(data => {
         // after the article object is returned, show the modal
         modal.style.display = 'block';
