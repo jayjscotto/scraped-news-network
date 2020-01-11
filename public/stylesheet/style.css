@@ -49,7 +49,7 @@ body div.nav a {
 
 body div.nav a:hover {
   text-decoration: none;
-  background-color: rgba(0, 245, 184, 0.9);
+  background-color: rgba(0, 245, 184, 0.97);
   color: #343a40;
   cursor: pointer;
 }
@@ -73,6 +73,10 @@ body div.nav div.headline h5 {
   text-transform: uppercase;
   margin-left: 1em;
   margin-top: 0.85em;
+}
+
+body div.nav div.saved {
+  margin: 0.5em 0 0 1em;
 }
 
 body div.nav div.menu {
@@ -99,7 +103,7 @@ body div.nav div.menu ul li a {
 }
 
 body div.nav div.menu ul li a:hover {
-  background-color: rgba(0, 245, 184, 0.9);
+  background-color: rgba(0, 245, 184, 0.97);
   color: #343a40;
 }
 
@@ -184,14 +188,16 @@ body div.main div.articles div.article div.buttons button {
   border-radius: 10px;
   padding: 0.25em 1em;
   margin: auto 0.25em;
-  height: 2em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   color: black;
   font-weight: 500;
 }
 
 body div.main div.articles div.article div.buttons button:hover {
   color: #343a40;
-  background-color: rgba(0, 245, 184, 0.9);
+  background-color: rgba(0, 245, 184, 0.97);
   cursor: pointer;
 }
 
@@ -236,7 +242,7 @@ body div#modal div.modal-content div.modal-header {
           flex-direction: row;
   border-radius: 10px 10px 0 0;
   padding: 0.5em 2em;
-  background-color: rgba(0, 245, 184, 0.9);
+  background-color: rgba(0, 245, 184, 0.97);
   color: white;
 }
 
@@ -284,7 +290,7 @@ body div#modal div.modal-content div.modal-body p.article-paragraph {
 body div#modal div.modal-content div.modal-footer {
   border-radius: 0 0 0 10px;
   padding: 10px 16px;
-  background-color: rgba(0, 245, 184, 0.9);
+  background-color: rgba(0, 245, 184, 0.97);
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -359,7 +365,7 @@ body footer div.footer-content a {
 body footer div.footer-content a:hover {
   text-decoration: none;
   color: #343a40;
-  background-color: rgba(0, 245, 184, 0.9);
+  background-color: rgba(0, 245, 184, 0.97);
 }
 
 body footer div.footer-content a h6 {

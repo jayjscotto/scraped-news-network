@@ -11,6 +11,9 @@
             <button class="modal-open" data-link="{{link}}">
                 View Article
             </button>
+            <button class="save-article" data-link="{{link}}"> 
+                Save Article
+            </button>
         </div>
     </div>
     <hr>
@@ -29,9 +32,9 @@
         </div>
         <div class="modal-footer">
             <h3>Leave Your Comment:</h3>
-            <input type="text" placeholder="Username (required)" required>
-            <textarea rows="10" cols="40" name="Comment" id="comment-field"></textarea>
-            <a id="submit">Submit</a>
+            <input id="comment-user" type="text" placeholder="Username (required)" required>
+            <textarea id="comment-body" rows="10" cols="40" name="Comment"></textarea>
+            <a id="submit-comment">Submit</a>
         </div>
     </div>
 </div>

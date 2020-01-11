@@ -9,6 +9,17 @@ const router = require('./routes/router');
 
 const app = express();
  
+mongoose.connect(
+  `mongodb://localhost/scrapednewsnetwork`, 
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false
+    }
+)
+mongoose.connection.once('open', function() {
+  console.log(`Sucessfully Connected to Mongo DB !`); // If Connection is successful, Console.log(Message)
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

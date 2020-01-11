@@ -1,4 +1,3 @@
-
 // async function to send the article link to the server
 // the server then scrapes the link at that route
 // the server then returns the scraped article
@@ -9,14 +8,41 @@ const getArticle = async link => {
   return data;
 };
 
+const saveArticle = async link => {
+  const response = await fetch('/save-article', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      link: link
+    })
+  });
+  const responseContent = await response.json();
+  console.log(responseContent);
+};
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // grabbing article modal
   const modal = document.getElementById('modal');
 
+  //save article button listener
+  const saveBtns = document.querySelectorAll('.save-article').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const link = e.target.getAttribute('data-link');
+
+      saveArticle(link);
+    });
+  });
+
   // Grab the button that opens the modal
   const btns = document.querySelectorAll('.modal-open').forEach(btn => {
-    
     btn.addEventListener('click', e => {
+      e.preventDefault();
+
       const link = e.target.getAttribute('data-link');
 
       console.log('hello');
@@ -24,16 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
       getArticle(link).then(data => {
         // after the article object is returned, show the modal
         modal.style.display = 'block';
-  
+
         const modalBody = document.querySelector('.modal-body');
+
         const header = document.querySelector('.modal-header h2');
-        const headerLink = document.querySelector('.modal-header a')
+        const headerLink = document.querySelector('.modal-header a');
         headerLink.setAttribute('href', link);
-        
+
         const paragraphArray = Object.values(data.paragraphs[0]);
 
         header.textContent = data.title;
-      
+
         paragraphArray.forEach((paragraph, index) => {
           const newP = document.createElement('p');
           newP.id = index;
@@ -41,10 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
           newP.textContent = paragraph;
 
           modalBody.appendChild(newP);
-          
-        })
-       
-
+        });
       });
     });
 
