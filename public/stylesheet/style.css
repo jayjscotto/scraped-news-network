@@ -175,6 +175,7 @@ body div.main div.articles div.article div.buttons {
       -ms-flex-direction: row;
           flex-direction: row;
   max-width: 20%;
+  margin: 0 auto;
 }
 
 body div.main div.articles div.article div.buttons button {
@@ -202,7 +203,7 @@ body div#modal {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 5em;
+  padding: 4em 0;
   left: 0;
   top: 0;
   width: 100%;
@@ -249,6 +250,25 @@ body div#modal div.modal-content div.modal-header span {
 
 body div#modal div.modal-content div.modal-header span:hover {
   cursor: pointer;
+  color: black;
+}
+
+body div#modal div.modal-content div.modal-header a {
+  text-decoration: none;
+  color: white;
+}
+
+body div#modal div.modal-content div.modal-header a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+body div#modal div.modal-content div.modal-header a:visited {
+  text-decoration: none;
+}
+
+body div#modal div.modal-content div.modal-header a h2 {
+  padding: 0.7em;
 }
 
 body div#modal div.modal-content div.modal-body {
@@ -256,15 +276,50 @@ body div#modal div.modal-content div.modal-body {
   background-color: white;
 }
 
+body div#modal div.modal-content div.modal-body p.article-paragraph {
+  margin: 0.5em auto;
+  width: 90%;
+}
+
 body div#modal div.modal-content div.modal-footer {
   border-radius: 0 0 0 10px;
-  padding: 2px 16px;
+  padding: 10px 16px;
   background-color: rgba(0, 245, 184, 0.9);
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 body div#modal div.modal-content div.modal-footer h3 {
   margin-left: 1em;
+}
+
+body div#modal div.modal-content div.modal-footer input, body div#modal div.modal-content div.modal-footer textarea {
+  width: 40%;
+  margin: 0.5em auto;
+  padding: 0.5em;
+}
+
+body div#modal div.modal-content div.modal-footer a {
+  width: 20%;
+  margin: 1em auto;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.5em 2em;
+  border-radius: 10px;
+  font-weight: 600;
+  background-color: #343a40;
+}
+
+body div#modal div.modal-content div.modal-footer a:hover {
+  cursor: pointer;
+  background-color: #4ce8fd;
+  color: #343a40;
 }
 
 body footer {

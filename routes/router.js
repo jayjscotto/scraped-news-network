@@ -69,12 +69,15 @@ router.get('/article?:article', (req, res) => {
 
       //scrape the article paragraphs
       $('.article__content').each((i, element) => {
-        const paragraph = $(element)
+        let paragraph = $(element)
         .find('p')
         .attr('class', '.slate-paragraph')
         .text();
+
+        const paragraphs = paragraph.split('\n');
+  
         
-        articleObj.paragraphs.push(paragraph);
+        articleObj.paragraphs.push(paragraphs);
       })
      
         console.log(articleObj)

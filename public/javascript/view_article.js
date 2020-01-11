@@ -23,16 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
       getArticle(link).then(data => {
         // after the article object is returned, show the modal
-       
         modal.style.display = 'block';
-        console.log(data)
+  
         const modalBody = document.querySelector('.modal-body');
-        const header = document.querySelector('.modal-header h1');
-        const p = document.createElement('p');
+        const header = document.querySelector('.modal-header h2');
+        const headerLink = document.querySelector('.modal-header a')
+        headerLink.setAttribute('href', link);
         
+        const paragraphArray = Object.values(data.paragraphs[0]);
+
         header.textContent = data.title;
-        p.textContent = data.paragraphs;
-        modalBody.appendChild(p);
+      
+        paragraphArray.forEach((paragraph, index) => {
+          const newP = document.createElement('p');
+          newP.id = index;
+          newP.className = 'article-paragraph';
+          newP.textContent = paragraph;
+
+          modalBody.appendChild(newP);
+          
+        })
+       
 
       });
     });
