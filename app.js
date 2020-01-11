@@ -9,24 +9,17 @@ const router = require('./controller/router');
 
 const app = express();
 
-//mongoose.connect(
-  //   `mongodb+srv://jayjs:${process.env.DB_PASSWORD}@cluster0-uudkd.mongodb.net/scrapednewsnetwork?retryWrites=true&w=majority`,
-  //   {
-  //     useNewUrlParser: true,
-  //     useUnifiedTopology: true,
-  //     useFindAndModify: false
-  //   }
-  // );
-  
- 
 mongoose.connect(
-  `mongodb://localhost:27017/scraped-news-network`, 
+    `mongodb+srv://jayjs:${process.env.DB_PASSWORD}@cluster0-uudkd.mongodb.net/scrapednewsnetwork?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false
     }
-)
+  );
+  
+ 
+
 mongoose.connection.once('open', function() {
   console.log(`Sucessfully Connected to Mongo DB !`); // If Connection is successful, Console.log(Message)
 });

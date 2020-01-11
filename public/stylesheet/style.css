@@ -22,6 +22,10 @@ body {
   min-height: 100%;
 }
 
+body button:focus {
+  outline: 0;
+}
+
 body div.nav {
   display: -webkit-box;
   display: -ms-flexbox;

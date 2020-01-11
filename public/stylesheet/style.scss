@@ -36,6 +36,12 @@ body {
   flex-direction: column;
   min-height: 100%;
 
+  button {
+    &:focus {
+      outline: 0;
+    }
+  }
+
   div.nav {
     display: flex;
     flex-direction: row;

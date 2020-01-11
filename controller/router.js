@@ -1,10 +1,9 @@
-
 const express = require('express');
 const router = express.Router();
 const cheerio = require('cheerio');
 const axios = require('axios');
 
-const db = require('../models')
+const db = require('../models');
 
 // load homepage and scrape specific articles off of slate
 router.get('/', (req, res) => {
@@ -65,10 +64,20 @@ router.post('/article/:article', (req, res) => {
 });
 
 router.get('/saved-articles', (req, res) => {
+  let articles = [];
   db.Article.find({}, (error, found) => {
-    res.json(found);
-  })
-})
+    if (error) {
+      console.log(error);
+    }
+    articles.push(found);
+  }).then((found) => {
+    console.log(found)
+    const saved = {
+      articles: articles
+    }
+    res.render('saved-articles', saved);
+  });   
+}); 
 
 router.get('/article?:article', (req, res) => {
   // get the link to the article

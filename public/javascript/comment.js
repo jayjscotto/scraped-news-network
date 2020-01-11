@@ -22,11 +22,13 @@ const saveComment = async (user, comment) => {
 document.addEventListener('DOMContentLoaded', () => {
   //submit comment
   const commentButton = document.querySelector('#submit-comment');
-  commentButton.addEventListener('click', e => {
-    e.preventDefault();
-    const user = document.querySelector('#comment-user').value;
-    const comment = document.querySelector('#comment-body').value;
+  if (commentButton) {
+    commentButton.addEventListener('click', e => {
+      e.preventDefault();
+      const user = document.querySelector('#comment-user').value;
+      const comment = document.querySelector('#comment-body').value;
 
-    saveComment(user, comment);
-  });
+      saveComment(user, comment);
+    });
+  }
 });

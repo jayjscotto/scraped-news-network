@@ -8,9 +8,6 @@
             <h4 class="article-title">{{title}}</h4>
         </div>
         <div class="buttons">
-            <button class="modal-open" data-link="{{link}}">
-                View Article
-            </button>
             <button class="save-article" data-link="{{link}}"> 
                 Save Article
             </button>
@@ -18,23 +15,5 @@
     </div>
     <hr>
     {{/each}}
-    </div>
-</div>
-
-<div id="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <a><h2></h2></a>
-            <span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-         
-        </div>
-        <div class="modal-footer">
-            <h3>Leave Your Comment:</h3>
-            <input id="comment-user" type="text" placeholder="Username (required)" required>
-            <textarea id="comment-body" rows="10" cols="40" name="Comment"></textarea>
-            <a id="submit-comment">Submit</a>
-        </div>
     </div>
 </div>

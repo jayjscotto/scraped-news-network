@@ -8,7 +8,7 @@ const getArticle = async link => {
   return data;
 };
 
-const saveArticle = async (link, title) => {
+const saveArticle = async (link, title, callback) => {
   const response = await fetch('/save-article', {
     method: 'POST',
     headers: {
@@ -42,43 +42,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Grab the button that opens the modal
   const btns = document.querySelectorAll('.modal-open').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-
-      const link = e.target.getAttribute('data-link');
-
-      getArticle(link).then(data => {
-        // after the article object is returned, show the modal
-        modal.style.display = 'block';
-
-        const modalBody = document.querySelector('.modal-body');
-
-        const header = document.querySelector('.modal-header h2');
-        const headerLink = document.querySelector('.modal-header a');
-        headerLink.setAttribute('href', link);
-
-        const paragraphArray = Object.values(data.paragraphs[0]);
-
-        header.textContent = data.title;
-
-        paragraphArray.forEach((paragraph, index) => {
-          const newP = document.createElement('p');
-          newP.id = index;
-          newP.className = 'article-paragraph';
-          newP.textContent = paragraph;
-
-          modalBody.appendChild(newP);
+    if(btn) {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+  
+        const link = e.target.getAttribute('data-link');
+  
+        getArticle(link).then(data => {
+          // after the article object is returned, show the modal
+          modal.style.display = 'block';
+  
+          const modalBody = document.querySelector('.modal-body');
+  
+          const header = document.querySelector('.modal-header h2');
+          const headerLink = document.querySelector('.modal-header a');
+          headerLink.setAttribute('href', link);
+  
+          const paragraphArray = Object.values(data.paragraphs[0]);
+  
+          header.textContent = data.title;
+  
+          paragraphArray.forEach((paragraph, index) => {
+            const newP = document.createElement('p');
+            newP.id = index;
+            newP.className = 'article-paragraph';
+            newP.textContent = paragraph;
+  
+            modalBody.appendChild(newP);
+          });
         });
-      });
     });
+  }
 
     // Get the <span> element that closes the modal
     const span = document.getElementsByClassName('close')[0];
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = 'none';
-    };
+    if (span) {
+      span.onclick = function() {
+        modal.style.display = 'none';
+      };
+    }
+    
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
@@ -86,5 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'none';
       }
     };
+
   });
+
+  const getSavedBtn = document.querySelector('#view-saved');
+  getSavedBtn.addEventListener('click', e => {
+      e.preventDefault();
+      window.location.pathname = '/saved-articles'
+  })
 });
