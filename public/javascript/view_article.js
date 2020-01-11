@@ -8,7 +8,7 @@ const getArticle = async link => {
   return data;
 };
 
-const saveArticle = async link => {
+const saveArticle = async (link, title) => {
   const response = await fetch('/save-article', {
     method: 'POST',
     headers: {
@@ -16,7 +16,8 @@ const saveArticle = async link => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      link: link
+      link: link,
+      title: title
     })
   });
   const responseContent = await response.json();
@@ -33,8 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', e => {
       e.preventDefault();
       const link = e.target.getAttribute('data-link');
-
-      saveArticle(link);
+      const titleDiv = e.target.parentElement.parentElement.querySelector('.title');
+      const title = titleDiv.children[0].textContent
+      saveArticle(link, title);
     });
   });
 

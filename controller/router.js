@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const cheerio = require('cheerio');
@@ -44,7 +45,7 @@ router.get('/', (req, res) => {
 router.post('/save-article', (req, res) => {
   // receive the article link in body of request
   // save the article in the database
-  db.Article.create({ link: req.body.link }, (error, saved) => {
+  db.Article.create(req.body, (error, saved) => {
     if (error) {
       console.log(error);
     }
@@ -52,15 +53,15 @@ router.post('/save-article', (req, res) => {
   });
 });
 
-router.post('/save-comment', (req, res) => {
+router.post('/article/:article', (req, res) => {
   console.log(req.body);
-  // db.Comment.create(req.body).then(dbComment => {
-  //   return db.Article.findOneAndUpdate(
-  //     { _id: req.params.id },
-  //     { $push: { comments: dbComment._id } },
-  //     { new: true }
-  //   );
-  // });
+  db.Comment.create(req.body).then(dbComment => {
+    return db.Article.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { comments: dbComment._id } },
+      { new: true }
+    );
+  });
 });
 
 router.get('/saved-articles', (req, res) => {
