@@ -52,16 +52,7 @@ router.post('/save-article', (req, res) => {
   });
 });
 
-router.post('/article/:article', (req, res) => {
-  console.log(req.body);
-  db.Comment.create(req.body).then(dbComment => {
-    return db.Article.findOneAndUpdate(
-      { _id: req.params.id },
-      { $push: { comments: dbComment._id } },
-      { new: true }
-    );
-  });
-});
+
 
 router.get('/saved-articles', (req, res) => {
 
@@ -69,6 +60,8 @@ router.get('/saved-articles', (req, res) => {
     if (error) {
       console.log(error);
     }
+    console.log(found);
+    return found;
     
   }).then((found) => {
     console.log(found)
@@ -82,6 +75,18 @@ router.get('/saved-articles', (req, res) => {
     res.render('saved-articles', saved);
   });   
 }); 
+
+router.post('/add-comment/:id', (req, res) => {
+  console.log(req.body);
+  console.log(req.params.id)
+  db.Comment.create(req.body).then(dbComment => {
+    return db.Article.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { comments: dbComment._id } },
+      { new: true }
+    );
+  });
+});
 
 router.get('/article?:article', (req, res) => {
   // get the link to the article

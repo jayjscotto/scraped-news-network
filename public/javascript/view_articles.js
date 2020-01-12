@@ -45,15 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if(btn) {
       btn.addEventListener('click', e => {
         e.preventDefault();
-  
+ 
+        // get article link and ID from DB
         const link = e.target.getAttribute('data-link');
+        const articleId = e.target.getAttribute('data-id');
+
   
         getArticle(link).then(data => {
           // after the article object is returned, show the modal
           modal.style.display = 'block';
-  
+
+          // set submit button data attribute equal to article id for comment storing
+          const commentSubmit = document.querySelector('#submit-comment');
+          commentSubmit.setAttribute('data-id', articleId);
+          
+          // grab DOM nodes to dynamically print the article
           const modalBody = document.querySelector('.modal-body');
-  
           const header = document.querySelector('.modal-header h2');
           const headerLink = document.querySelector('.modal-header a');
           headerLink.setAttribute('href', link);
