@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 const router = require('./controller/router');
 const app = express();
-const MONGODB_URI = process.env.MONGODB_URI || ;
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/scraped-news-network";
 
 mongoose.connect(
     MONGODB_URI,
