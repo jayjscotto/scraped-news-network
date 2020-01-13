@@ -58,10 +58,8 @@ router.get('/saved-articles', (req, res) => {
     if (error) {
       console.log(error);
     }
-    console.log(found);
     return found;
   }).then(found => {
-    console.log(found);
     const articles = [];
     found.forEach(article => {
       articles.push(article);
@@ -125,7 +123,6 @@ router.get('/article/:articleId', (req, res) => {
         // push the article title and link to the articles array
         articleArr.push(articleObj);
         // send the article array as the response
-        console.log(articleObj);
         res.send(articleObj);
       });
     });
@@ -143,7 +140,6 @@ router.get('/article/:articleId', (req, res) => {
         if (error) {
           console.log(error);
         }
-        console.log(found);
         if (found) {
           articleObj.comments.push({
             user: found.user,
@@ -156,7 +152,7 @@ router.get('/article/:articleId', (req, res) => {
 
     return scrapeArticle(articleLink);
   });
-});
+});   
 
 router.delete('/article/:articleId', (req, res) => {
   // get the id of the article
@@ -167,6 +163,7 @@ router.delete('/article/:articleId', (req, res) => {
 });
 
 router.delete('/comment/:commentId', (req, res) => {
+  console.log('deleting comment')
   // get the id of the article
   const commentId = req.params.articleId;
   db.Comment.findByIdAndRemove(commentId, (error, res) => {

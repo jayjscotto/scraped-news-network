@@ -8,9 +8,10 @@ const mongoose = require('mongoose');
 const router = require('./controller/router');
 
 const app = express();
+const connectionURI = process.env.DB_URI;
 
 mongoose.connect(
-    `mongodb+srv://jayjs:${process.env.DB_PASSWORD}@cluster0-uudkd.mongodb.net/scrapednewsnetwork?retryWrites=true&w=majority`,
+    connectionURI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

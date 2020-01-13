@@ -80,20 +80,36 @@ document.addEventListener('DOMContentLoaded', () => {
       commentDiv.id = index;
       commentDiv.setAttribute('class', 'comment');
 
+      const commentContent = document.createElement('div');
+      commentContent.setAttribute('class', 'comment-content');
+      commentContent.id = index;
+
       const commentText = document.createElement('p');
+      commentText.setAttribute('class', 'comment-text')
       commentText.id = index;
-      commentText.textContent = comment.body;
+      commentText.textContent = ` ${comment.body}`;
 
       const commentUser = document.createElement('h4');
       commentUser.id = index;
-      commentUser.textContent = comment.user;
+      commentUser.textContent = `${comment.user}:`;
 
       const deleteCommentBtn = document.createElement('a')
-      deleteCommentBtn.setAttribute('class', '.delete-comment');
+      deleteCommentBtn.setAttribute('class', 'delete-comment');
+
+      const deleteDiv = document.createElement('div');
+      deleteDiv.setAttribute('class', 'delete-button-div')
+      deleteDiv.id = index;
+
+      deleteCommentBtn.setAttribute('data-id', comment.id)
+      deleteCommentBtn.textContent = 'Delete Comment'
 
       const newHr = document.createElement('hr');
 
-      commentDiv.append(commentUser, commentText, deleteCommentBtn);
+      deleteDiv.append(deleteCommentBtn);
+
+      commentContent.append(commentUser, commentText);
+
+      commentDiv.append(deleteDiv, commentContent);
       modalCommentArea.append(newHr, commentDiv);
     });
   };
@@ -212,14 +228,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  const deleteCommentBtn = document.querySelector('.delete-comment');
-  if (deleteCommentBtn) {
-    deleteArticleBtn.addEventListener('click', e => {
-      e.preventDefault();
-      const commentId = e.target.getAttribute('data-id');
-      deleteComment(commentId);
-      document.getElementById(commentId).remove();
-    })
-  }
+  const deleteCommentBtn = document.querySelectorAll('.delete-comment').forEach(btn => {
+   
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const commentId = e.target.getAttribute('data-id');
+        const commentIndex = e.target.getAttribute('id')
+        console.log(`deleting ${commentId}`)
+        deleteComment(commentId);
+        document.getElementById(commentIndex).remove();
+      })
+
+  });
+ 
 
 });

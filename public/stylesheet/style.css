@@ -314,6 +314,50 @@ body div#modal div.modal-content div.modal-comments hr {
 body div#modal div.modal-content div.modal-comments div.comment {
   width: 50%;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body div#modal div.modal-content div.modal-comments div.comment div.delete-button-div {
+  margin: 1em 2em 1em 0;
+}
+
+body div#modal div.modal-content div.modal-comments div.comment div.delete-button-div a {
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0.25em 1em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: black;
+  font-weight: 500;
+}
+
+body div#modal div.modal-content div.modal-comments div.comment div.delete-button-div a:hover {
+  color: rgba(0, 245, 184, 0.97);
+  background-color: #343a40;
+  cursor: pointer;
+}
+
+body div#modal div.modal-content div.modal-comments div.comment div.comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body div#modal div.modal-content div.modal-comments div.comment div.comment-content p, body div#modal div.modal-content div.modal-comments div.comment div.comment-content h4 {
+  margin: auto 1em;
 }
 
 body div#modal div.modal-content div.modal-footer {
@@ -337,7 +381,8 @@ body div#modal div.modal-content div.modal-footer form.comment-form {
           flex-direction: column;
 }
 
-body div#modal div.modal-content div.modal-footer form.comment-form input, body div#modal div.modal-content div.modal-footer form.comment-form textarea {
+body div#modal div.modal-content div.modal-footer form.comment-form input,
+body div#modal div.modal-content div.modal-footer form.comment-form textarea {
   width: 40%;
   margin: 0.5em auto;
   padding: 0.5em;
