@@ -2,36 +2,44 @@
     <h2> Your Saved Scraped News Network Articles...</h2>
     <hr>
     <div class="articles">
-    {{#each articles}}
-    <div class="article">
-        <div class="title">
-            <h4 class="article-title">{{title}}</h4>
+        {{#each articles}}
+        <div class="article">
+            <div class="title">
+                <h4 class="article-title">{{title}}</h4>
+            </div>
+            <div class="buttons">
+                <button class="modal-open" data-id="{{_id}}" data-link="{{link}}">
+                    View Article
+                </button>
+            </div>
         </div>
-        <div class="buttons">
-            <button class="modal-open" data-id="{{_id}}" data-link="{{link}}">
-                View Article
-            </button>
-        </div>
-    </div>
-    <hr>
-    {{/each}}
+        <hr>
+        {{/each}}
     </div>
 </div>
 
 <div id="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <a><h2></h2></a>
+            <a>
+                <h2></h2>
+            </a>
             <span class="close">&times;</span>
         </div>
         <div class="modal-body">
-         
+
+        </div>
+        <div class="modal-comments">
+
         </div>
         <div class="modal-footer">
             <h3>Leave Your Comment:</h3>
-            <input id="comment-user" type="text" placeholder="Username (required)" required>
-            <textarea id="comment-body" rows="10" cols="40" name="Comment"></textarea>
-            <a id="submit-comment">Submit</a>
+            <form class="comment-form">
+                <input id="comment-user" type="text" placeholder="Username (required)" required>
+                <textarea id="comment-body" rows="10" cols="40" placeholder="Your comment..." name="comment"></textarea>
+                <a class="submit-comment">Submit</a>
+            </form>
+
         </div>
     </div>
 </div>

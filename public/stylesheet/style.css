@@ -218,14 +218,8 @@ body div#modal {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.8);
-}
-
-body div#modal::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
 }
 
 body div#modal div.modal-content {
@@ -234,6 +228,15 @@ body div#modal div.modal-content {
   position: relative;
   width: 80%;
   max-width: 75%;
+  height: 80%;
+  overflow: auto;
+  overflow: scroll;
+}
+
+body div#modal div.modal-content::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* make scrollbar transparent */
 }
 
 body div#modal div.modal-content div.modal-header {
@@ -251,11 +254,10 @@ body div#modal div.modal-content div.modal-header {
 }
 
 body div#modal div.modal-content div.modal-header span {
-  font-size: 2em;
+  font-size: 4em;
   position: absolute;
   right: 0;
-  margin-right: 1.5em;
-  padding-bottom: 2em;
+  margin-right: 0.25em;
 }
 
 body div#modal div.modal-content div.modal-header span:hover {
@@ -291,11 +293,41 @@ body div#modal div.modal-content div.modal-body p.article-paragraph {
   width: 90%;
 }
 
+body div#modal div.modal-content div.modal-comments {
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: white;
+}
+
+body div#modal div.modal-content div.modal-comments hr {
+  width: 50%;
+  margin: 0 auto;
+}
+
+body div#modal div.modal-content div.modal-comments div.comment {
+  width: 50%;
+  margin: 0 auto;
+}
+
 body div#modal div.modal-content div.modal-footer {
   border-radius: 0 0 0 10px;
   padding: 10px 16px;
   background-color: rgba(0, 245, 184, 0.97);
   color: white;
+}
+
+body div#modal div.modal-content div.modal-footer h3 {
+  margin-left: 1em;
+}
+
+body div#modal div.modal-content div.modal-footer form.comment-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -305,31 +337,30 @@ body div#modal div.modal-content div.modal-footer {
           flex-direction: column;
 }
 
-body div#modal div.modal-content div.modal-footer h3 {
-  margin-left: 1em;
-}
-
-body div#modal div.modal-content div.modal-footer input, body div#modal div.modal-content div.modal-footer textarea {
+body div#modal div.modal-content div.modal-footer form.comment-form input, body div#modal div.modal-content div.modal-footer form.comment-form textarea {
   width: 40%;
   margin: 0.5em auto;
   padding: 0.5em;
 }
 
 body div#modal div.modal-content div.modal-footer a {
-  width: 20%;
-  margin: 1em auto;
-  text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
-  padding: 0.5em 2em;
+  border: 2px solid black;
   border-radius: 10px;
-  font-weight: 600;
-  background-color: #343a40;
+  padding: 0.5em 1.5em;
+  margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: black;
+  font-weight: 500;
 }
 
 body div#modal div.modal-content div.modal-footer a:hover {
+  color: rgba(0, 245, 184, 0.97);
+  background-color: #343a40;
   cursor: pointer;
-  background-color: #4ce8fd;
-  color: #343a40;
 }
 
 body footer {

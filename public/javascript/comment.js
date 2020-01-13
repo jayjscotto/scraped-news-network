@@ -1,36 +1,9 @@
 //script that processes user's name input and comment input
 //sends to backend to be entered into the db
 
-// async function to save article to db
-// the server then writes article link to the database
-const saveComment = async (user, comment, id) => {
-  const response = await fetch(('/add-comment/' + id), {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
 
-      user: user,
-      body: comment
-    })
-  });
-  const responseContent = await response.json();
-  console.log(responseContent);
-};
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  //submit comment
-  const commentButton = document.querySelector('#submit-comment');
-  if (commentButton) {
-    commentButton.addEventListener('click', e => {
-      e.preventDefault();
-      const user = document.querySelector('#comment-user').value;
-      const comment = document.querySelector('#comment-body').value;
-      const articleId = document.querySelector('#submit-comment').getAttribute('data-id')
-
-      saveComment(user, comment, articleId);
-    });
-  }
+ 
 });
