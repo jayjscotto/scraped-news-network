@@ -3,13 +3,16 @@
     <hr>
     <div class="articles">
         {{#each articles}}
-        <div class="article">
+        <div id={{_id}} class="article">
             <div class="title">
                 <h4 class="article-title">{{title}}</h4>
             </div>
             <div class="buttons">
                 <button class="modal-open" data-id="{{_id}}" data-link="{{link}}">
                     View Article
+                </button>
+                <button class="delete-article" data-id="{{_id}}">
+                    Delete Article
                 </button>
             </div>
         </div>

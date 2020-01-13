@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const responseContent = await response.json();
   }
 
-  const deleteArticle = async (commentId) => {
+  const deleteComment = async (commentId) => {
     const response = await fetch('/comment/' + commentId, {
       method: 'DELETE',
       headers: {
@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // function to print the comments to the modal
   const printComments = array => {
+    modalCommentArea.textContent = '';
     array.forEach((comment, index) => {
       console.log(comment);
       const commentDiv = document.createElement('div');
@@ -87,18 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
       commentUser.id = index;
       commentUser.textContent = comment.user;
 
+      const deleteCommentBtn = document.createElement('a')
+      deleteCommentBtn.setAttribute('class', '.delete-comment');
+
       const newHr = document.createElement('hr');
 
-      commentDiv.append(commentUser, commentText);
+      commentDiv.append(commentUser, commentText, deleteCommentBtn);
       modalCommentArea.append(newHr, commentDiv);
     });
   };
 
-
-  // create comments when user submits on the front end
-  const createComment = (user, body) => {
-    const comment = comments = []
-  }
 
   //save article button listener
   const saveBtns = document.querySelectorAll('.save-article').forEach(btn => {
@@ -110,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       const title = titleDiv.children[0].textContent;
       saveArticle(link, title);
+      e.target.textContent = 'Article Saved!'
+
     });
   });
 
@@ -198,9 +199,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.pathname = '/saved-articles';
   });
 
+
   const deleteArticleBtn = document.querySelector('.delete-article');
-  deleteArticleBtn.addEventListener('click', e => {
-    e.preventDefault();
-    
-  })
+  if (deleteArticleBtn) {
+    deleteArticleBtn.addEventListener('click', e => {
+      e.preventDefault();
+      const articleId = e.target.getAttribute('data-id');
+      deleteArticle(articleId);
+      document.getElementById(articleId).remove();
+      window.location.reload();
+    })
+  }
+
+
+  const deleteCommentBtn = document.querySelector('.delete-comment');
+  if (deleteCommentBtn) {
+    deleteArticleBtn.addEventListener('click', e => {
+      e.preventDefault();
+      const commentId = e.target.getAttribute('data-id');
+      deleteComment(commentId);
+      document.getElementById(commentId).remove();
+    })
+  }
+
 });
