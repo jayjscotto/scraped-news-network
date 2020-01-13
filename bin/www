@@ -30,6 +30,18 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+const mongoose = require('mongoose');
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/scraped-news-network";
+
+mongoose.connect(
+    MONGODB_URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false
+    }
+  );
+
 /**
  * Normalize a port into a number, string, or false.
  */
