@@ -6,12 +6,11 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const router = require('./controller/router');
-const db = require('./models');
 const app = express();
-const connectionURI = process.env.DB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || ;
 
 mongoose.connect(
-    connectionURI,
+    MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
