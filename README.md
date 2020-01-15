@@ -5,7 +5,7 @@ Web Scraping project that scrapes articles from Slate and allows users to leave 
 The homepage will display the articles
 
 ## Using the deployed version
-* Navigate to: TBD 
+* Navigate to: https://scraped-news-network.herokuapp.com
 
 ## Local Usage
 * Clone this repository onto your local machine
