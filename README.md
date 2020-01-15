@@ -1,5 +1,7 @@
 # scraped-news-network
 Web Scraping project that scrapes articles from Slate and allows users to leave comments on each article.
+![readme](https://user-images.githubusercontent.com/50807550/72472753-3076ff00-37b3-11ea-8d8d-1de5d8dd8bee.gif)
+
 
 ## Using the Project
 The homepage will display the articles
