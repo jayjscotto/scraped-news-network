@@ -88,7 +88,7 @@ router.get('/article/:articleId', (req, res) => {
   const articleId = req.params.articleId;
   // declare array to push the scraped article elements into
   const articleArr = [];
-
+  
   // define object to send back to handlebars
   const articleObj = {
     paragraphs: []
@@ -123,36 +123,51 @@ router.get('/article/:articleId', (req, res) => {
         // push the article title and link to the articles array
         articleArr.push(articleObj);
         // send the article array as the response
-        res.send(articleObj);
+        
       });
     });
   };
 
-  db.Article.findById(articleId, (error, found) => {
-    if (error) {
-      console.log(error);
-    }
-    articleObj.comments = [];
-    const articleLink = found.link;
-    const articleComments = found.comments;
-    articleComments.forEach(comment => {
-      db.Comment.findById(comment, (error, found) => {
-        if (error) {
-          console.log(error);
-        }
-        if (found) {
-          articleObj.comments.push({
-            user: found.user,
-            body: found.body,
-            id: found.id
-          });
-        }
-      });
-    });
+  // db.Article.findById(articleId, (error, found) => {
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  //   articleObj.comments = [];
+    
+  //   const articleComments = found.comments;
+  //   articleComments.forEach(comment => {
+  //     db.Comment.findById(comment, (error, found) => {
+  //       if (error) {
+  //         console.log(error);
+  //       }
+  //       if (found) {
+  //         articleObj.comments.push({
+  //           user: found.user,
+  //           body: found.body,
+  //           id: found.id
+  //         });
+  //       }
+  //     });
+  //   });
 
-    return scrapeArticle(articleLink);
-  });
-});   
+
+
+    db.Article.findById(articleId, (error, found) => {
+      if (error) {
+        console.log(error);
+       const articleLink = found.link;
+       return scrapeArticle(articleLink);
+      }
+    }).populate('comments', (error, comments) => {
+      articleObj.comments = comments
+      console.log(articleObj)
+      res.send(articleObj);
+    })
+    
+   
+      });
+
+
 
 router.delete('/article/:articleId', (req, res) => {
   // get the id of the article
