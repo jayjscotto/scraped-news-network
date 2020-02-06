@@ -18,10 +18,10 @@ The homepage will display the articles
 
 ## Built With
 * [Heroku](https://www.heroku.com/)- Cloud platform which builds databases and websites deployed online. 
-* [Javascript](https://www.javascript.com/) - The scripting language used to manipulate the DOM.  
+* [JavaScript](https://www.javascript.com/) - The scripting language used to manipulate the DOM.  
 * [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for Node
 * [Cheerio](https://www.npmjs.com/package/cheerio) - A subset of core jQuery designed for server-side code
-* [Node](https://nodejs.org/en) - Javascript run-time environment that exectues server side code.
+* [Node](https://nodejs.org/en) - JavaScript run-time environment that exectues server side code.
 * [Express](https://www.npmjs.com/package/express) - Node package used as middleware to create routes.
 * [Express-Handlebars](https://www.npmjs.com/package/express-handlebars) - Node package used as middleware to create templates for rendering pages. 
 * [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Mark up language used for structuring pages. 
